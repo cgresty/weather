@@ -144,8 +144,17 @@ func (d DatapointProvider) OneDayForecast(dayDelta int) OneDayForecast {
 		log.Fatalln(err)
 	}
 
+	var period0 = regional.RegionalFcst.FcstPeriods.Period[0]
+	var description = fmt.Sprintf("%s\n\n%s\n%s\n\n%s\n%s",
+		period0.Paragraphs.Paragraph[0].Text,
+		period0.Paragraphs.Paragraph[1].Title,
+		period0.Paragraphs.Paragraph[1].Text,
+		period0.Paragraphs.Paragraph[2].Title,
+		period0.Paragraphs.Paragraph[2].Text,
+	)
+
 	var f = OneDayForecast{
-		Description: regional.RegionalFcst.FcstPeriods.Period[0].Paragraphs.Paragraph[0].Text,
+		Description: description,
 	}
 	return f
 }
