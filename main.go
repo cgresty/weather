@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"go.gresty.dev/weather/datapoint"
+	"go.gresty.dev/weather/common"
 )
 
 func main() {
-	fmt.Println("This is the weather app!")
-	datapoint.Sayhi()
+	p := common.DefaultProvider()
+	var f = p.OneDayForecast(0)
+	fmt.Printf("%s\n", f.Description)
 }
